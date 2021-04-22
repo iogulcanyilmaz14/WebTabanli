@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OyuncakSatisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Educationals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EducationalToys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EducationalId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitsInStock" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Plushs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PlushToys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlushId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitsInStock" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Puzzles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PuzzleToys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PuzzleId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitsInStock" Type="smallint" />
+        </EntityType>
+        <EntityType Name="Sciences">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ScienceToys">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScienceId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="UnitsInStock" Type="smallint" />
+        </EntityType>
+        <Association Name="FK_Educationals_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Educationals" Type="Self.Educationals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Educationals">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducationalToys_Educationals">
+          <End Role="Educationals" Type="Self.Educationals" Multiplicity="1" />
+          <End Role="EducationalToys" Type="Self.EducationalToys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educationals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EducationalToys">
+              <PropertyRef Name="EducationalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plushs_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Plushs" Type="Self.Plushs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plushs">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlushToys_Plushs">
+          <End Role="Plushs" Type="Self.Plushs" Multiplicity="1" />
+          <End Role="PlushToys" Type="Self.PlushToys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plushs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlushToys">
+              <PropertyRef Name="PlushId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puzzles_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Puzzles" Type="Self.Puzzles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puzzles">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PuzzleToys_Puzzles">
+          <End Role="Puzzles" Type="Self.Puzzles" Multiplicity="1" />
+          <End Role="PuzzleToys" Type="Self.PuzzleToys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puzzles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PuzzleToys">
+              <PropertyRef Name="PuzzleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sciences_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Sciences" Type="Self.Sciences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sciences">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScienceToys_Sciences">
+          <End Role="Sciences" Type="Self.Sciences" Multiplicity="1" />
+          <End Role="ScienceToys" Type="Self.ScienceToys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sciences">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScienceToys">
+              <PropertyRef Name="ScienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OyuncakSatisModelStoreContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Educationals" EntityType="Self.Educationals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationalToys" EntityType="Self.EducationalToys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plushs" EntityType="Self.Plushs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlushToys" EntityType="Self.PlushToys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puzzles" EntityType="Self.Puzzles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PuzzleToys" EntityType="Self.PuzzleToys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sciences" EntityType="Self.Sciences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScienceToys" EntityType="Self.ScienceToys" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Educationals_Categories" Association="Self.FK_Educationals_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Educationals" EntitySet="Educationals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationalToys_Educationals" Association="Self.FK_EducationalToys_Educationals">
+            <End Role="Educationals" EntitySet="Educationals" />
+            <End Role="EducationalToys" EntitySet="EducationalToys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plushs_Categories" Association="Self.FK_Plushs_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Plushs" EntitySet="Plushs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlushToys_Plushs" Association="Self.FK_PlushToys_Plushs">
+            <End Role="Plushs" EntitySet="Plushs" />
+            <End Role="PlushToys" EntitySet="PlushToys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puzzles_Categories" Association="Self.FK_Puzzles_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Puzzles" EntitySet="Puzzles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PuzzleToys_Puzzles" Association="Self.FK_PuzzleToys_Puzzles">
+            <End Role="Puzzles" EntitySet="Puzzles" />
+            <End Role="PuzzleToys" EntitySet="PuzzleToys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sciences_Categories" Association="Self.FK_Sciences_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Sciences" EntitySet="Sciences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScienceToys_Sciences" Association="Self.FK_ScienceToys_Sciences">
+            <End Role="Sciences" EntitySet="Sciences" />
+            <End Role="ScienceToys" EntitySet="ScienceToys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OyuncakSatisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Educationals" Relationship="Self.FK_Educationals_Categories" FromRole="Categories" ToRole="Educationals" />
+          <NavigationProperty Name="Plushs" Relationship="Self.FK_Plushs_Categories" FromRole="Categories" ToRole="Plushs" />
+          <NavigationProperty Name="Puzzles" Relationship="Self.FK_Puzzles_Categories" FromRole="Categories" ToRole="Puzzles" />
+          <NavigationProperty Name="Sciences" Relationship="Self.FK_Sciences_Categories" FromRole="Categories" ToRole="Sciences" />
+        </EntityType>
+        <EntityType Name="Educational">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Educationals_Categories" FromRole="Educationals" ToRole="Categories" />
+          <NavigationProperty Name="EducationalToys" Relationship="Self.FK_EducationalToys_Educationals" FromRole="Educationals" ToRole="EducationalToys" />
+        </EntityType>
+        <EntityType Name="EducationalToy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EducationalId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <NavigationProperty Name="Educational" Relationship="Self.FK_EducationalToys_Educationals" FromRole="EducationalToys" ToRole="Educationals" />
+        </EntityType>
+        <EntityType Name="Plush">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Plushs_Categories" FromRole="Plushs" ToRole="Categories" />
+          <NavigationProperty Name="PlushToys" Relationship="Self.FK_PlushToys_Plushs" FromRole="Plushs" ToRole="PlushToys" />
+        </EntityType>
+        <EntityType Name="PlushToy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlushId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <NavigationProperty Name="Plush" Relationship="Self.FK_PlushToys_Plushs" FromRole="PlushToys" ToRole="Plushs" />
+        </EntityType>
+        <EntityType Name="Puzzle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Puzzles_Categories" FromRole="Puzzles" ToRole="Categories" />
+          <NavigationProperty Name="PuzzleToys" Relationship="Self.FK_PuzzleToys_Puzzles" FromRole="Puzzles" ToRole="PuzzleToys" />
+        </EntityType>
+        <EntityType Name="PuzzleToy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PuzzleId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <NavigationProperty Name="Puzzle" Relationship="Self.FK_PuzzleToys_Puzzles" FromRole="PuzzleToys" ToRole="Puzzles" />
+        </EntityType>
+        <EntityType Name="Science">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Sciences_Categories" FromRole="Sciences" ToRole="Categories" />
+          <NavigationProperty Name="ScienceToys" Relationship="Self.FK_ScienceToys_Sciences" FromRole="Sciences" ToRole="ScienceToys" />
+        </EntityType>
+        <EntityType Name="ScienceToy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScienceId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitsInStock" Type="Int16" />
+          <NavigationProperty Name="Science" Relationship="Self.FK_ScienceToys_Sciences" FromRole="ScienceToys" ToRole="Sciences" />
+        </EntityType>
+        <Association Name="FK_Educationals_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Educationals" Type="Self.Educational" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Educationals">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Plushs_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Plushs" Type="Self.Plush" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Plushs">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Puzzles_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Puzzles" Type="Self.Puzzle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Puzzles">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sciences_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+          <End Role="Sciences" Type="Self.Science" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sciences">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EducationalToys_Educationals">
+          <End Role="Educationals" Type="Self.Educational" Multiplicity="1" />
+          <End Role="EducationalToys" Type="Self.EducationalToy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Educationals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EducationalToys">
+              <PropertyRef Name="EducationalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlushToys_Plushs">
+          <End Role="Plushs" Type="Self.Plush" Multiplicity="1" />
+          <End Role="PlushToys" Type="Self.PlushToy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plushs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PlushToys">
+              <PropertyRef Name="PlushId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PuzzleToys_Puzzles">
+          <End Role="Puzzles" Type="Self.Puzzle" Multiplicity="1" />
+          <End Role="PuzzleToys" Type="Self.PuzzleToy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puzzles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PuzzleToys">
+              <PropertyRef Name="PuzzleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScienceToys_Sciences">
+          <End Role="Sciences" Type="Self.Science" Multiplicity="1" />
+          <End Role="ScienceToys" Type="Self.ScienceToy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sciences">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScienceToys">
+              <PropertyRef Name="ScienceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OyuncakSatisEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Educationals" EntityType="Self.Educational" />
+          <EntitySet Name="EducationalToys" EntityType="Self.EducationalToy" />
+          <EntitySet Name="Plushs" EntityType="Self.Plush" />
+          <EntitySet Name="PlushToys" EntityType="Self.PlushToy" />
+          <EntitySet Name="Puzzles" EntityType="Self.Puzzle" />
+          <EntitySet Name="PuzzleToys" EntityType="Self.PuzzleToy" />
+          <EntitySet Name="Sciences" EntityType="Self.Science" />
+          <EntitySet Name="ScienceToys" EntityType="Self.ScienceToy" />
+          <AssociationSet Name="FK_Educationals_Categories" Association="Self.FK_Educationals_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Educationals" EntitySet="Educationals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Plushs_Categories" Association="Self.FK_Plushs_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Plushs" EntitySet="Plushs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Puzzles_Categories" Association="Self.FK_Puzzles_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Puzzles" EntitySet="Puzzles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sciences_Categories" Association="Self.FK_Sciences_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Sciences" EntitySet="Sciences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EducationalToys_Educationals" Association="Self.FK_EducationalToys_Educationals">
+            <End Role="Educationals" EntitySet="Educationals" />
+            <End Role="EducationalToys" EntitySet="EducationalToys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlushToys_Plushs" Association="Self.FK_PlushToys_Plushs">
+            <End Role="Plushs" EntitySet="Plushs" />
+            <End Role="PlushToys" EntitySet="PlushToys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PuzzleToys_Puzzles" Association="Self.FK_PuzzleToys_Puzzles">
+            <End Role="Puzzles" EntitySet="Puzzles" />
+            <End Role="PuzzleToys" EntitySet="PuzzleToys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScienceToys_Sciences" Association="Self.FK_ScienceToys_Sciences">
+            <End Role="Sciences" EntitySet="Sciences" />
+            <End Role="ScienceToys" EntitySet="ScienceToys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OyuncakSatisModelStoreContainer" CdmEntityContainer="OyuncakSatisEntities1">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educationals">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.Educational">
+              <MappingFragment StoreEntitySet="Educationals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationalToys">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.EducationalToy">
+              <MappingFragment StoreEntitySet="EducationalToys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EducationalId" ColumnName="EducationalId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plushs">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.Plush">
+              <MappingFragment StoreEntitySet="Plushs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlushToys">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.PlushToy">
+              <MappingFragment StoreEntitySet="PlushToys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PlushId" ColumnName="PlushId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puzzles">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.Puzzle">
+              <MappingFragment StoreEntitySet="Puzzles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PuzzleToys">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.PuzzleToy">
+              <MappingFragment StoreEntitySet="PuzzleToys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PuzzleId" ColumnName="PuzzleId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sciences">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.Science">
+              <MappingFragment StoreEntitySet="Sciences">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScienceToys">
+            <EntityTypeMapping TypeName="OyuncakSatisModel.ScienceToy">
+              <MappingFragment StoreEntitySet="ScienceToys">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ScienceId" ColumnName="ScienceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="UnitsInStock" ColumnName="UnitsInStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

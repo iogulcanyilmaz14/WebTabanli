@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="22ca5111aea648d99ab06139f9045388" Name="Diagram1">
+        <EntityTypeShape EntityType="OyuncakSatisModel.Category" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.Educational" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.EducationalToy" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.Plush" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.PlushToy" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.Puzzle" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.PuzzleToy" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.Science" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OyuncakSatisModel.ScienceToy" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_Educationals_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_Plushs_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_Puzzles_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_Sciences_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_EducationalToys_Educationals" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_PlushToys_Plushs" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_PuzzleToys_Puzzles" ManuallyRouted="false" />
+        <AssociationConnector Association="OyuncakSatisModel.FK_ScienceToys_Sciences" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

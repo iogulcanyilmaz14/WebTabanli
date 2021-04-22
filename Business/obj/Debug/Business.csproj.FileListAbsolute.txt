@@ -1,0 +1,2 @@
+C:\Users\ogulc\source\repos\WebTabanlıProgramlama\Business\obj\Debug\Business.csprojAssemblyReference.cache
+C:\Users\ogulc\source\repos\WebTabanlıProgramlama\Business\obj\Debug\Business.csproj.CoreCompileInputs.cache
